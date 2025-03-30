@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Minecraft Skin Head Viewer</title>
+  <link rel="stylesheet" href="head_viewer.css">
+</head>
+<body>
+  <div id="container">
+    <div id="info">Minecraft Skin Head Viewer<br>拖動鼠標旋轉，滾輪縮放<br>點擊右側按鈕使頭部按軸旋轉<br>手機可用兩指旋轉，橙色按鈕重置位置</div>
+    <input type="file" id="fileInput" accept=".png">
+    <button id="uploadBtn">上傳Minecraft皮膚 (64x64 PNG)</button>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/"
+      }
+    }
+  </script>
+  <!-- 注意：type="module" 是必要的 -->
+  <script type="module" src="head_viewer_script.js"></script>
+</body>
+</html>
