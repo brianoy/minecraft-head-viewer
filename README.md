@@ -12,6 +12,12 @@ Smooth Animation: Textured head rotates smoothly on the Y and Z axes with an osc
 
 Anti-aliasing: Ensures smooth edges and clean rendering even during fast rotations.
 
+Interactive: Supports future features accelerometer
+
+| 功能            | Android Chrome | Apple Safari | Apple Chrome |
+|---------------|:--------------:|:------------:|:------------:|
+| 加速計轉動    | ✅ >chrome 67 支援        | ❌ 不支援    | ❌ 不支援    |
+
 # 🔧 Usage
 ### Clone the repository
 
@@ -56,6 +62,8 @@ httpd.socket = context.wrap_socket(httpd.socket, server_side=True)
 print(f"Serving HTTPS on port {PORT}")
 httpd.serve_forever()
 ```
+
+Then, Browse `https://localhost:4443/index.html`.
 
 ### Modify Skin Textures
 
