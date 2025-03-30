@@ -13,26 +13,51 @@ Smooth Animation: Textured head rotates smoothly on the Y and Z axes with an osc
 Anti-aliasing: Ensures smooth edges and clean rendering even during fast rotations.
 
 # 🔧 Usage
-### Clone the repository:
+### Clone the repository
 
 `git clone https://github.com/your-username/minecraft-head-textures-viewer.git`
 
-### Open the project:
+### Open the project
 
-Important: To run this project, you must serve it through a local or remote server. Simply opening the index.html file directly in your browser may cause certain features (like device orientation) to not work.
+Important: To run this project, you must serve it through a local or remote server. Simply opening the index.html file directly in your browser may cause certain features (like three.js) to not work.
 
 You can use VS Code Live Server, http-server, or any other local server tool to serve the project.
 
 
 ### Mobile Device Functionality
 
-If you intend to use mobile features like device orientation (for tilt/rotation), make sure the website is served over HTTPS.
+If you intend to use mobile features like device orientation (for rotation), make sure the website is served over HTTPS.
 
 HTTP will prevent access to device orientation APIs on most mobile devices due to security restrictions.
 
-For local testing, use tools like ngrok to create an HTTPS tunnel for your local server.
+For local testing, use tools like ngrok to create an HTTPS tunnel for your local server or you can use Python code to start an HTTPS server locally.
 
-### Modify Textures
+Generate the certificate in the cmd, and fill in the information according to the steps to generate the server.pem file
+```bash
+openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes
+```
+
+Run this python code to host a https server locally
+```python
+import http.server
+import ssl
+
+PORT = 4443
+Handler = http.server.SimpleHTTPRequestHandler
+
+httpd = http.server.HTTPServer(("0.0.0.0", PORT), Handler)
+
+# 使用 SSLContext
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context.load_cert_chain(certfile="server.pem")
+
+httpd.socket = context.wrap_socket(httpd.socket, server_side=True)
+
+print(f"Serving HTTPS on port {PORT}")
+httpd.serve_forever()
+```
+
+### Modify Skin Textures
 
 To use your custom textures, replace the texture path in `head_viewer_script.js` at `defaultSkinUrl`, or just read the file in your computer.
 
@@ -44,7 +69,6 @@ The cube rotates on the Y and Z axes, oscillating between 0 and 0.2 radians, giv
 Anti-aliasing and anisotropic filtering improve the overall visual quality.
 
 # 🎨 Customize
-Change textures: Replace the texture images with your own Minecraft head textures.
 
 Background color: Modify the scene.background or renderer.setClearColor() to set a custom background.
 
@@ -52,4 +76,4 @@ Background color: Modify the scene.background or renderer.setClearColor() to set
 This project is open-source under GPL-3.0 license.
 
 # 👾 Contribute
-Feel free to open issues, fork the repository, and submit pull requests for enhancements and fixes. Contributions are welcome!
+Feel free to open issues, and submit pull requests for enhancements and fixes. Contributions are welcome!
