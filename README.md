@@ -21,7 +21,7 @@ Interactive: Supports future features accelerometer
 # 🔧 Usage
 ### Clone the repository
 
-`git clone https://github.com/your-username/minecraft-head-textures-viewer.git`
+`git clone https://github.com/0x6r1an0y/minecraft-head-viewer.git`
 
 ### Open the project
 
